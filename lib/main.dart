@@ -14,16 +14,32 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Unilinking',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Green(),
+     routerConfig: goRouter,
     );
   }
 }
+
+final goRouter = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const Green(),
+      routes: [
+        GoRoute(
+          path: 'details/:itemId',
+          builder: (context, state) =>
+              Details(id: state.pathParameters['itemId']!),
+        )
+      ],
+    )
+  ],
+);
 
 class InitialScreen extends StatelessWidget {
   const InitialScreen({super.key});

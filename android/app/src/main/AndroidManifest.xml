@@ -29,6 +29,7 @@
                 <data
                     android:scheme="https"
                     android:host="pranavdave-d9dc3.web.app"
+                    android:pathPattern="/details/.*"
                     />
             </intent-filter>
             <!-- Specifies an Android theme to apply to this Activity as soon as

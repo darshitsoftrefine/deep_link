@@ -10,8 +10,10 @@ class Green extends StatelessWidget {
       body: ListView(
         children: List.generate(10, (index) => ListTile(
           onTap: (){
-            var param1 = "param$index";
-            context.goNamed("sample", pathParameters: {'id1': param1});
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Details(id: index.toString())),
+            );
           },
           title: Text("Data $index"),
         ))
@@ -21,14 +23,14 @@ class Green extends StatelessWidget {
 }
 
 class Details extends StatelessWidget {
-  Details({super.key, this.id1});
+  Details({super.key, required String id});
 
-  String? id1;
+  String? id;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("You ar on $id1"),
+        child: Text("You ar on $id"),
       ),
     );
   }
